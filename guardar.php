@@ -67,12 +67,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
     <head>
         <meta charset="utf-8">
-        <title> Lista </title>
+        <title> Guardar cliente </title>
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" /> 
     </head>
     <body>
         <div class="container">
-            <h1> Lista </h1>
+            <h1> Guardar cliente </h1>
             <form method="post" action="guardar.php">
                 <div class="row">
                     <div class="span2">
