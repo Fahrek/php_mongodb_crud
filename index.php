@@ -31,7 +31,7 @@ $lista = $cliente_coleccion->find();
                     <a href="guardar.php" class="btn btn-success"> Agregar nuevo cliente </a>
                 </div>
             </div>
-            <table class="table">
+            <table id="lista_clientes" class="table">
                 <thead>
                     <tr>
                         <th> Nombre y apellido </th>
@@ -61,7 +61,7 @@ $lista = $cliente_coleccion->find();
                             </td>
                             <td>
                                 <a href="guardar.php?_id=<?php echo $item['_id'] ?>" class="btn btn-info"> Editar </a>
-                                <a href="eliminar.php?_id=<?php echo $item['_id'] ?>" class="btn btn-danger"> Eliminar </a>
+                                <a href="eliminar.php?_id=<?php echo $item['_id'] ?>" class="btn btn-danger eliminar"> Eliminar </a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -69,5 +69,16 @@ $lista = $cliente_coleccion->find();
             </table>
         </div>
         <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+            $("#lista_clientes .eliminar").each(function(){
+                var href = $(this).attr('href');
+                $(this).attr('href', 'javascript:void(0);');
+                $(this).click(function(){
+                    if(confirm('¿Está seguro/a que desa eliminar a este cliente?')){
+                        location.href = href;
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
