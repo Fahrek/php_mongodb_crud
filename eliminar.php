@@ -2,9 +2,8 @@
 
 try {
     $mongo = new Mongo();
-    $db = $mongo->selectDB('prueba');
-    $informe_documento = $db->selectCollection('informe');
-    $lista = $informe_documento->find();
+    $db = $mongo->selectDB('veterinaria');
+    $cliente_coleccion = $db->selectCollection('cliente');
 } catch (MongoConnectionException $e) {
     echo $e->getMessage();
     exit;
@@ -13,10 +12,13 @@ try {
     exit;
 }
 
-$ide = (isset($_REQUEST['ide'])) ? $_REQUEST['ide'] : null;
+$id = (isset($_REQUEST['_id'])) ? $_REQUEST['_id'] : null;
 
-if ($ide) {
-    $informe_documento->remove(array('_id' => new MongoId($ide)));
+if($id){
+    $cliente_documento_objeto = new MongoId($id);
+    $cliente_coleccion->remove(array(
+        '_id' => $cliente_documento_objeto
+    ));
 }
 
 header('Location: index.php');
